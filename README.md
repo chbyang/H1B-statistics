@@ -20,7 +20,7 @@ In this example: {3: [accountant, software, postdoc]; 5: [data]}
 
 In this example: 14 (3+3+3+5) is number of certified works, which is the largest possible freq. The first occupation is founded when scan to 5, then find accountant/software/postdoc when scan to 3. Here, only 4 kinds of occupations are found.
 
-4. Need to sort title list before print in step 3 [accountant, software, postdoc], but the chance of having same count is really small, so time complexity is still O(N)
+4.Need to sort title list before print in step 3 [accountant, software, postdoc], but the chance of having same count is really small, so time complexity is still O(N)
 
 ## Run
 update 3 args to input/occupation_output/state_output
