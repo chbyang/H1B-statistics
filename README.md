@@ -14,4 +14,5 @@ Sort title list [accountant, software, postdoc], but the chance of having same c
 
 ## Run
 update 3 args to input/occupation_output/state_output
+
 ./run.sh
