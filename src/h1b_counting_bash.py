@@ -138,7 +138,7 @@ for count in range(row-1,0,-1):
         for i in dict_freq_state[count]:
             if left>0:
                 res_state.append(i)
-                output2.write(i+";"+str(count)+";"+'{percent:.1%}'.format(percent=count/(row-1))+'\n')
+                output2.write(i+";"+str(count)+";"+'{percent:2.1%}'.format(percent=count/(row-1))+'\n')
                 left-=1
             else:
                 break
