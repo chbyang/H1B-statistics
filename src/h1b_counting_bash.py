@@ -49,9 +49,8 @@ output2=open('../output/top_10_states.txt','w')
 '''
 
 import sys
-#input=open(sys.argv[1] ,encoding="utf8")
+input=open(sys.argv[1] ,encoding="utf8")
 #input=open('../input/h1b_input.csv',encoding="utf8")
-input=open(sys.argv[1])
 output1=open(sys.argv[2],'w')
 output2=open(sys.argv[3],'w')
 
@@ -124,7 +123,7 @@ for count in range(row-1,0,-1):
         for i in dict_freq_occupation[count]:
             if left>0:
                 res_occupation.append(i)
-                output1.write(i+";"+str(count)+";"+'{percent:2.1%}'.format(percent=count/(row-1))+'\n')
+                output1.write(i+";"+str(count)+";"+'{percent:.1%}'.format(percent=count/(row-1))+'\n')
                 left-=1
             else:       #found 10,stop
                 break
@@ -138,7 +137,7 @@ for count in range(row-1,0,-1):
         for i in dict_freq_state[count]:
             if left>0:
                 res_state.append(i)
-                output2.write(i+";"+str(count)+";"+'{percent:2.1%}'.format(percent=count/(row-1))+'\n')
+                output2.write(i+";"+str(count)+";"+'{percent:.1%}'.format(percent=count/(row-1))+'\n')
                 left-=1
             else:
                 break
