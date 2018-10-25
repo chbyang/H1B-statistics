@@ -12,7 +12,7 @@ Time Complexity: O(N)
 for example: {software: 3; data: 5; accountants: 3 ; postdoc: 3;}
 2. Reverse key and value. get a dict {key: freq, val: list(tilte/state)}
 {3,[accountant,software,postdoc];5,[data]}
-3. Scan from 11 to 1 in last reversed dict, 11 is number of certified, which is the largest possible freq, add fisrt 10 title/state.
+3. Scan reversed dic from largest possible freq to 1, In this example 14 (3+3+3+5) is number of certified works, which is the largest possible freq, add fisrt 10 title/state(maybe smaller than 3, in this example, only 4 kinds of occupation are found).
 In this example, first occupation is founded when scan to 5, then find accountant/software/postdoc when scan to 3
 Sort title list [accountant, software, postdoc], but the chance of having same count is really small, so time complexity is still O(N)
 
