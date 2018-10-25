@@ -1,3 +1,7 @@
 # visa-statistics
 
-my solution
+## Problem
+
+## Approach
+
+## Run
