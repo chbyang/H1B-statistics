@@ -49,8 +49,9 @@ output2=open('../output/top_10_states.txt','w')
 '''
 
 import sys
-input=open(sys.argv[1] ,encoding="utf8")
+#input=open(sys.argv[1] ,encoding="utf8")
 #input=open('../input/h1b_input.csv',encoding="utf8")
+input=open(sys.argv[1])
 output1=open(sys.argv[2],'w')
 output2=open(sys.argv[3],'w')
 
