@@ -124,7 +124,7 @@ for count in range(row-1,0,-1):
         for i in dict_freq_occupation[count]:
             if left>0:
                 res_occupation.append(i)
-                output1.write(i+";"+str(count)+";"+'{percent:.1%}'.format(percent=count/(row-1))+'\n')
+                output1.write(i+";"+str(count)+";"+'{percent:2.1%}'.format(percent=count/(row-1))+'\n')
                 left-=1
             else:       #found 10,stop
                 break
