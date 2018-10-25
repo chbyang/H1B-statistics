@@ -6,8 +6,8 @@ for example: {software,3; data 5; accountants 3}
 {3,[accountant,software];5,[data]}
 3. scan from 11 to 1 in last reversed dict, 11 is row name, which is the largest possible count
 add firt 10 title/state.
-In this example, data is first founded when scan to 5, then accountant and software when scan to 3
-I do sort title list [accountant, software], but the odd of having same count is really small, 
+In this example, data is first founded when scan to 5, then find accountant and software when scan to 3
+Sort title list [accountant, software], but the chance of having same count is really small, 
 so this algorithm is still O(N)
 '''
 
@@ -41,16 +41,9 @@ have different names. Below are names of two columns from 08 to 17:
 16: CASE_STATUS CERTIFIED
 17: CASE_STATUS CERTIFIED
 '''
-'''
-input=open('../input/H1B_FY_2016.csv',encoding="utf8")
-#input=open('../input/h1b_input.csv',encoding="utf8")
-output1=open('../output/top_10_occupations.txt','w')
-output2=open('../output/top_10_states.txt','w')
-'''
 
 import sys
 input=open(sys.argv[1] ,encoding="utf8")
-#input=open('../input/h1b_input.csv',encoding="utf8")
 output1=open(sys.argv[2],'w')
 output2=open(sys.argv[3],'w')
 
