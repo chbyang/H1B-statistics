@@ -28,29 +28,8 @@ have different names. Below are names of two columns from 08 to 17:
 17: SOC_NAME WORKSITE_STATE
 '''
 
-''' status can have differe column name but value always certified, so just search 'certified' in each line
-08: APPROVAL_STATUS CERTIFIED
-09: APPROVAL_STATUS CERTIFIED (efile)
-09: STATUS CERTIFIED (icert)
-10: STATUS CERTIFIED
-11: STATUS CERTIFIED
-12: STATUS CERTIFIED
-13: STATUS CERTIFIED
-14: STATUS CERTIFIED
-15: CASE_STATUS CERTIFIED
-16: CASE_STATUS CERTIFIED
-17: CASE_STATUS CERTIFIED
-'''
-'''
-input=open('../input/H1B_FY_2016.csv',encoding="utf8")
-#input=open('../input/h1b_input.csv',encoding="utf8")
-output1=open('../output/top_10_occupations.txt','w')
-output2=open('../output/top_10_states.txt','w')
-'''
-
 import sys
 input=open(sys.argv[1] ,encoding="utf8")
-#input=open('../input/h1b_input.csv',encoding="utf8")
 output1=open(sys.argv[2],'w')
 output2=open(sys.argv[3],'w')
 
@@ -77,15 +56,11 @@ for line in input:          #get one line
                     Occupation_idx=col
             if col_name=='STATE_1' or col_name=='LCA_CASE_WORKLOC1_STATE' or col_name=='WORK_LOCATION_STATE1' or col_name=='WORKSITE_STATE': #candidates of state names
                 State_idx=col
-            '''
-            if col_name=='APPROVAL_STATUS' or col_name=='STATUS' or col_name=='CASE_STATUS':        #possible status names
-                status_idx=col 
-            '''
             col+=1
     else:
         if 'CERTIFIED' not in linelist:
             continue
-        name_occupation=linelist[Occupation_idx].strip('"')         #occupation name may have " in the beginning or end
+        name_occupation=linelist[Occupation_idx].strip('"')         #occupation name may have " in the beginning or end, strip them
         if name_occupation not in dict_occupation_freq:
             dict_occupation_freq[name_occupation]=1
         else:
