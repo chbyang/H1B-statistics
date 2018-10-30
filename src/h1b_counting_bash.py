@@ -64,7 +64,7 @@ for line in input:          #get one line
                 State_idx=col
             col+=1
     else:
-        if 'CERTIFIED' not in linelist:
+        if 'CERTIFIED' not in linelist:         # if not CERTIFIED, pass this row
             continue
         name_occupation=linelist[Occupation_idx].strip('"')         #occupation name may have " in the beginning or end, strip them
         if name_occupation not in dict_occupation_freq:
@@ -75,7 +75,7 @@ for line in input:          #get one line
             dict_state_freq[linelist[State_idx]]=1
         else:
             dict_state_freq[linelist[State_idx]]+=1
-    row+=1      #calculate row. include column names,so data is row-1
+    row+=1      #calculate row. certified data is row-1
 
 #get dict_freq_occupation
 for occupation,freq in dict_occupation_freq.items():
@@ -111,7 +111,7 @@ for count in range(row-1,0,-1):
 left=K
 output2.write("TOP_STATES;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n")
 for count in range(row-1,0,-1):
-    if left==0: break
+    if left==0: break   #found 10,stop
     if count in dict_freq_state:
         dict_freq_state[count].sort(key=str.lower)           # if multiple occupations have the same freq, sort string
         for i in dict_freq_state[count]:
@@ -119,7 +119,7 @@ for count in range(row-1,0,-1):
                 res_state.append(i)
                 output2.write(i+";"+str(count)+";"+'{percent:.1%}'.format(percent=count/(row-1))+'\n')
                 left-=1
-            else:
+            else:       #found 10,stop
                 break
             
 #print(res_occupation, res_state)
