@@ -1,16 +1,23 @@
 '''
-O(N) algorithm
-1. Get a dict of title/state+ count.
-for example: {software,3; data 5; accountants 3}
-2. Reverse key and value. get a dict count+list(tilte/state)
-{3,[accountant,software];5,[data]}
-3. scan from 11 to 1 in last reversed dict, 11 is row name, which is the largest possible count
-add firt 10 title/state.
-In this example, data is first founded when scan to 5, then accountant and software when scan to 3
-I do sort title list [accountant, software], but the odd of having same count is really small, 
-so this algorithm is still O(N)
-'''
+Time Complexity: O(N)
 
+1.Get a dict {key: occupation/state; val: freq}
+
+for example: {software: 3; data: 5; accountants: 3 ; postdoc: 3;}
+
+2.Reverse key and value. get a dict {key: freq; val: list(occupation/state)}
+
+In this example: {3: [accountant, software, postdoc]; 5: [data]}
+
+3.Scan reversed dic from largest possible freq to 1, add first 10 occupation/state(maybe smaller than 10)
+
+In this example: 14 (3+3+3+5) is number of certified works, which is the largest possible freq. 
+The first occupation is founded when scan to 5, then find accountant/software/postdoc when scan to 3. 
+Here, only 4 kinds of occupations are found.
+
+4.Need to sort occupation list before print in step 3 [accountant, software, postdoc], 
+but the chance of having same freq is really small, so time complexity is still O(N)
+'''
 
 '''
 After read file structure documents, I find job title and work state columns can
@@ -29,8 +36,8 @@ have different names. Below are names of two columns from 08 to 17:
 '''
 
 import sys
-input=open(sys.argv[1] ,encoding="utf8")
-output1=open(sys.argv[2],'w')
+input=open(sys.argv[1] ,encoding="utf8")    #import data
+output1=open(sys.argv[2],'w')               #output files
 output2=open(sys.argv[3],'w')
 
 K=10    #top K job titles or states
@@ -43,7 +50,6 @@ dict_freq_state={}          #freq and a list of states having the same freq
 row=0                       
 Occupation_idx=0            #index of occupation name column, it varies among documents
 State_idx=0                 #index of state name column, it varies among document
-#status_idx=0                #index of status
 
 # get dict_occupation_freq and dict_state_freq
 for line in input:          #get one line
@@ -69,7 +75,7 @@ for line in input:          #get one line
             dict_state_freq[linelist[State_idx]]=1
         else:
             dict_state_freq[linelist[State_idx]]+=1
-    row+=1
+    row+=1      #calculate row. include column names,so data is row-1
 
 #get dict_freq_occupation
 for occupation,freq in dict_occupation_freq.items():
